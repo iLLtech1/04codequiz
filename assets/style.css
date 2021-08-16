@@ -1,0 +1,134 @@
+body {
+  background-color: rgb(48, 48, 54);
+  font-family: 'Georama', sans-serif;
+  font-size: 2em;
+  /* added padding to prevent navbar overlap. (100 based on browser inpector of size) */
+  padding-top: 90px;
+}
+
+/* header  */
+
+.navbar {
+  border: 3px solid rgb(43, 38, 51);
+  border-radius: 10px;
+  background-color: #73749b;
+  color: #bcb6e2;
+  /* pulls everything down to push up against bottom border */
+  padding-bottom: 10%;
+  /* allows ??? to control the horizontal position */
+  padding-left: 10%;
+  /* creates solid line for the bottom border  */
+  /* border-bottom: solid;
+  border-bottom-color: #ccc; */
+  padding-right: 10%;
+  width: 100%;
+  margin: 10px;
+  padding: 50px;
+  color: #fff;
+  z-index: 20;
+}
+
+.container-fluid {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#navbar-title {
+  padding: 15px;
+  font-size: 100px;
+  color: #fff;
+  z-index: 20;
+}
+
+.dropdpwn {
+  position: relative;
+  /* padding-bottom: 7%;
+  padding-left: 75%; */
+  font-size: 30px;
+  color: #fff;
+  z-index: 20;
+}
+
+.footer {
+  border: 3px solid rgb(43, 38, 51);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  color: #fff;
+  background-color: #73749b;
+  color: #bcb6e2;
+  /* pulls everything down to push up against bottom border */
+  padding-bottom: 10%;
+  /* allows ??? to control the horizontal position */
+  padding-left: 10%;
+  /* creates solid line for the bottom border  */
+  /* border-bottom: solid;
+  border-bottom-color: #ccc; */
+  padding-right: 10%;
+  width: 100%;
+  z-index: 10;
+}
+
+.footer-text {
+  position: relative;
+  padding-top: 10%;
+  padding-left: 1%;
+  color: #fff;
+  z-index: 20;
+}
+
+.info-title {
+  font-size: relative;
+  color: #fff;
+  z-index: 20;
+}
+
+.info-list {
+  margin: 10px;
+  padding: 10px;
+  color: #fff;
+  z-index: 20;
+}
+
+button {
+  margin: 1em;
+}
+
+/* button styles */
+
+.start_button {
+  position: relative;
+  left: 0%;
+  z-index: 20;
+}
+
+.continue {
+  position: relative;
+  left: 0%;
+  z-index: 20;
+}
+
+.quit {
+  position: relative;
+  left: 0%;
+  z-index: 30;
+}
+
+}
+
+@media pmly screen and (max-width: 765px) {
+  .container {
+    ;
+    ex-direction: column
+  }
+  .tall {
+    height: 500px!important;
+    max-height: 500px!important;
+  }
+  .box-callout figure:hover figcaption {
+    max-height: 500px;
+  }
+  .box-callout figcaption {
+    top: 0;
+  }
+}

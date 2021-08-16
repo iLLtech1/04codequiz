@@ -4,13 +4,88 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>04 CODE QUIZ</title>
+  
   <link rel="stylesheet" href="./assets/reset.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
   <link rel="stylesheet" href="./assets/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Georama:wght@200&display=swap" rel="stylesheet">
+
+  <title>Timed QUIZ</title>
 </head>
 <body>
-  
+  <!-- <div class="row">
+    <div class="col-12"> -->
+    
+        <!--Header-->
+        <nav class="navbar">
+          <div class="container-fluid">
+            <h1 id="navbar-title" class="nav-item">
+              Timed Quiz
+            </h1>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                VIEW HIGH SCORE
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            <table id=timers style="visibility:hidden;">
+              <tr>
+                <td class="nav-item"> Time left before the end of the game:  </td>
+                <td> <span id="gameTimer"
+                class="nav-item"></span> </td>
+              </tr>
+              <tr>
+                <td class="nav-item">Time left to answer:</td>
+                <td><span id="questionTimer" 
+                  class="nav-item"></span> </td>
+              </tr>
+            </table>
+          </div>
+        </nav>
+      <!--header end--> 
+      <!--body start-->
+      <div class="container-fluid">
+        <section id="details">
+          <div class="info-box">
+            <div class="info-title">
+              <span>Rules of the Quiz</span>
+            </div>
+            <div class="info-list">
+              <div class="info"> 1. You will only have <span>15 seconds</span> per each question.</div>
+              <div class="info"> 2. Once you select and answer, you cannot reselect.</div>
+              <div class="info"> 3. You can't select any option once timer goes off.</div>
+              <div class="info"> 4. You can't exit from the quiz while you are playing.</div> 5.You'll get points on the basis of your correct answers.
+            </div>
+          <div class="d-grid gap-2 d-md-block">
+            <button type="button" class="btn btn-outline-light btn-lg start_button">START</button>
+            <button type="button" class="btn btn-outline-light
+            btn-lg continue">CONTINUE</button>
+            <button type="button" class="btn btn-outline-light btn-lg quit">QUIT</button>
+          </div>
+        </section>
+      </div>
+      <!--Footer Start-->
+      <div class="row footer">
+        <div class="col-12">
+          <div class="footer-text">iLLtech Syntax</div>
+        </div>
+      </div>
+      <!--footer end-->
+    <!-- </div>
+  </div> -->
 
-  <script src="./assets/app.js"></script>
+<!--Read file for JS-->
+<script src="./assets/app.js"></script>
 </body>
 </html>

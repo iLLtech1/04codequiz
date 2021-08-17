@@ -26,14 +26,14 @@
       <div id="hud">
         <div class="hud-item">
           <div class="container-item">
-            <p id="progress-text" class="hud-prefix">
+            <p id="progressText" class="hud-prefix">
               Question
             </p>
           </div>
           <div class="container-score">
-            <!-- <div id="progressBar">
+            <div id="progressBar">
               <div id="progressBarFull"></div>
-            </div> -->
+            </div>
             <div id="hud-item">
               <p class="hud-prefix">
                 Score
@@ -47,7 +47,10 @@
         </div>
       </div>
       <h1 id="question" class="question">What is the answer to this question?</h1>
-      <div class="choice-container">
+      <div class="question-choices">
+
+      </div>
+      <!-- <div class="choice-container">
         <p class="choice-prefix">A</p>
         <p class="choice-text" data-number="1">Choice 1</p>
       </div>
@@ -62,14 +65,14 @@
       <div class="choice-container">
         <p class="choice-prefix">D</p>
         <p class="choice-text" data-number="4">Choice 4</p>
-      </div>
+      </div> -->
     </div>
   </div>
 
   <script>
       const question = document.querySelector('#question')
-      const choices = Array.from(document.querySelector('.choice-text'))
-      const progressText = document.querySelector('#progressText')
+      const choices = [];
+      const progressText = document.getElementById('progressText')
       const scoreText = document.querySelector('#score')
       const progressBarFull = document.querySelector('#progressBarFull')
 
@@ -82,79 +85,84 @@
       let questions = [
         {
           question: 'What is the character call out for a class in CSS?',
-          choice1: 'Money Symbol',
-          choice2: 'Question Mark',
-          choice3: 'And Symbol',
-          choice4: 'Period',
-          answer: 4,
+          choices: ['Money Symbol', 'Question Mark', 'And Symbol', 'Period'],
+          answer: 'Period',
         },
 
         {
           question: 'What does CSS stand for?',
-          choice1: 'Cool Style Syntax',
-          choice2: 'Cause Smooth Style',
-          choice3: 'Come Super Saying',
-          choice4: 'Cascading Style Sheet',
-          answer: 4,
+          choices: ['Cool Style Syntax', 'Cause Smooth Style', 'Come Super Saying', 'Cascading Style Sheet'],
+          answer: 'Cascading Style Sheet',
         },
 
         {
           question: 'What does HTML stand for?',
-          choice1: 'Hot Tamali Mama Love',
-          choice2: 'Hyper Text MarkUp Language',
-          choice3: 'Hyper Tour Masking Light',
-          choice4: 'Have Too Much Load',
-          answer: 2,
+          choices: ['Hot Tamali Mama Love', 'Hyper Text MarkUp Language', 'Hyper Tour Masking Light', 'Have Too Much Load',],
+          answer: 'Hyper Text MarkUp Language',
         },
 
         {
           question: 'What is Repo short for?',
-          choice1: 'Grim Repo',
-          choice2: 'Repossession',
-          choice3: 'Repository',
-          choice4: 'Nothing',
-          answer: 3,
+          choices: ['Grim Repo', 'Repossession', 'Repository', 'Nothing'],
+          answer: 'Repository',
         },
       ]
 
       const SCORE_POINTS = 100
       const MAX_QUESTIONS = 4
 
-      startQuiz => () => {
+      const startQuiz = () => {
         questionCounter = 0
         score = 0
-        avalibleQuestions = [...questions]
-        getNewQuestions()
+        console.log('hit')
+        console.log(questions[0].choices)
+        getNewQuestions(questions)
       }
 
-      getNewQuestions = () => {
-        if (availibleQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+      const getNewQuestions = (questions) => {
+        console.log('questions')
+        if (questions.length === 0 || questionCounter > MAX_QUESTIONS) {
           localStorage.setItem('mostRecentScore', score)
 
           return window.location.assign('/end.html')
         }
         questionCounter++
-        progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+        progressText.textContent = `Question ${questionCounter} of ${MAX_QUESTIONS}`
         progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
 
-        const questionsIndex = Math.floor(Math.random() * availibleQuestions.length)
-        currentQuestion = availibleQuestions[questionsIndex]
+        const questionsIndex = Math.floor(Math.random() * questions.length)
+        currentQuestion = questions[questionsIndex]
         question.innerText = currentQuestion.question
-
-        choices.forEach(choice => {
-          const number = choice.dataset ['number']
-          choice.innerText = currentQuestion['choice' + number]
+        console.log(currentQuestion.choices)
+        currentQuestion.choices.forEach((choice, i) => {
+          var choicesContainer = document.querySelector(".question-choices")
+          var questionChoice = document.createElement('div')
+          var choiceText = document.createElement('p')
+          questionChoice.setAttribute("class", 'choice-container')
+          choiceText.setAttribute('class', 'choice-text')
+          // const number = choice.dataset ['number']
+          choiceText.innerText =  i + 1 + '. ' + choice
+          questionChoice.appendChild(choiceText);
+          choicesContainer.appendChild(questionChoice);
+          // questionChoice.onclick = choiceClicked 
         })
 
-        availibleQuestions.splice(questionsIndex, 1)
+        questions.splice(questionsIndex, 1)
 
         acceptingAnswers = true
       }
+      // document.addEventListener('click', event => {
+      //   console.log(event.target)
+      // })
 
-      choices.forEach(choice => {
-        choice.addEventListener('click', e => {
+      // currently event listener not working. Nothing is triggered when click an answer
+
+      // handle user clicking buttons and answer check
+
+      choices.forEach((choice, i) => {
+        choice.onclick ('click', e => {
+          console.log('click')
           if (!acceptingAnswers) return
-
           acceptingAnswers = false
           const selectedChoice = e.target
           const selectedAnswer = selectedChoice.dataset['number']
@@ -180,6 +188,12 @@
         score += num
         scoreText.innerText = score
       }
+      startQuiz()
+
+      document.addEventListener('click', event => {
+
+      })
+
 
   </script>
 
